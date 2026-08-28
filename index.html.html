@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Haven SPA - Oase Ketenangan & Kecantikan Alami</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           COLOR PALETTE & CSS VARIABLES
+           ========================================== */
+        :root {
+            --sage-green: #8A9A86;
+            --warm-beige: #F5EBE6;
+            --soft-cream: #FAF6F0;
+            --muted-gold: #C5A059;
+            --deep-slate: #2C3E35;
+            --white: #FFFFFF;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--soft-cream);
+            color: var(--deep-slate);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(250, 246, 240, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--deep-slate);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--muted-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--muted-gold);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--muted-gold);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 1px solid var(--muted-gold);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--muted-gold);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--deep-slate);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 1px solid var(--deep-slate);
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--deep-slate);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 53, 0.4), rgba(44, 62, 53, 0.4)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Sections Common */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--deep-slate);
+        }
+
+        .section-title p {
+            color: var(--sage-green);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--warm-beige);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--deep-slate);
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: #555;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(138, 154, 134, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--deep-slate);
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--warm-beige);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-card p {
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+
+        .client-name {
+            font-style: normal;
+            font-weight: 600;
+            color: var(--muted-gold);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item h4 {
+            font-size: 1.2rem;
+            color: var(--muted-gold);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--deep-slate);
+            color: var(--soft-cream);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--muted-gold);
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.3rem; }
+            .about-content, .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+            .btn-secondary { margin-left: 0; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">PURE HAVEN <span>SPA</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <a href="#contact" class="btn-primary">Pesan Layanan</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Temukan Ketenangan Sejati dan Kesegaran Alami</h1>
+            <p>Tempat pelarian mewah untuk memanjakan tubuh, menenangkan jiwa, dan mengembalikan pancaran kecantikan alami Anda.</p>
+            <a href="#contact" class="btn-primary">Pesan Layanan Sekarang</a>
+            <a href="#services" class="btn-secondary">Jelajahi Perawatan</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-title" style="text-align: left; margin-bottom: 1.5rem;">
+                        <p>Tentang Pure Haven</p>
+                        <h2>Oase Ketenangan di Tengah Hiruk-Pikuk Kota</h2>
+                    </div>
+                    <p>Di <strong>Pure Haven SPA</strong>, kami percaya bahwa perawatan diri bukanlah sekadar kemewahan, melainkan sebuah kebutuhan holistik. Dirancang khusus sebagai tempat pelarian dari penatnya rutinitas harian, kami memadukan teknik pemijatan tradisional dan modern dengan kekayaan bahan-bahan organik alami pilihan.</p>
+                    <p>Setiap sudut ruangan kami dirancang untuk menciptakan suasana hening, damai, dan menyegarkan. Bersama para terapis profesional kami, biarkan pikiran Anda beristirahat dan biarkan tubuh Anda menemukan kembali keseimbangan alaminya.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80" alt="Suasana Suaka Spa">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <p>Pengalaman Kemewahan</p>
+                <h2>Layanan Unggulan Kami</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Pijat Aromaterapi Signature</h3>
+                    <p>Sensasi relaksasi mendalam menggunakan sentuhan lembut terapis ahli yang dipadukan dengan minyak esensial organik pilihan. Efektif meredakan ketegangan otot dan menenangkan pikiran yang lelah.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Perawatan Wajah Organik</h3>
+                    <p>Perawatan wajah menyeluruh menggunakan ekstrak tumbuhan dan bahan alami tanpa kimia sintetis. Mengembalikan kelembapan alami, mencerahkan, dan memberikan kilau sehat pada kulit Anda.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Paket Refleksologi & Ritual Kaki</h3>
+                    <p>Terapi titik tekan pada area kaki yang terhubung langsung dengan keseimbangan organ tubuh. Dilengkapi dengan perendaman kaki dalam air hangat beraroma rempah alami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <p>Ulasan</p>
+                <h2>Kata Mereka Tentang Kami</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Pengalaman spa terbaik yang pernah saya rasakan. Suasananya sangat tenang, aroma terapinya langsung membuat rileks sejak pertama kali masuk. Perawatan wajah organiknya benar-benar membuat kulit saya terasa segar."</p>
+                    <div class="client-name">Siti R.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Pure Haven SPA benar-benar menjadi tempat pelarian langganan saya setiap akhir pekan. Terapisnya sangat profesional dan bahan-bahan organik yang digunakan sangat lembut di kulit."</p>
+                    <div class="client-name">Amanda K.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <p>Reservasi & Lokasi</p>
+                <h2>Kunjungi Oase Kami</h2>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <h4>Alamat</h4>
+                        <p>Jl. Kencana Raya No. 88, Kawasan Asri, Kota Anda</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <h4>Reservasi WhatsApp</h4>
+                        <p><a href="https://wa.me/6281234567890" target="_blank" style="color: var(--deep-slate); font-weight: 600;">+62 812-3456-7890</a></p>
+                    </div>
+                    <div class="contact-info-item">
+                        <h4>Jam Operasional</h4>
+                        <p>Senin – Minggu: 09.00 – 21.00 WIB</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <p><em>*Disarankan untuk melakukan reservasi terlebih dahulu demi kenyamanan perawatan Anda.</em></p>
+                    </div>
+                </div>
+                <div class="contact-action" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background-color: var(--warm-beige); padding: 2.5rem; border-radius: 8px;">
+                    <h3 style="margin-bottom: 1rem;">Siap Memanjakan Diri Anda?</h3>
+                    <p style="margin-bottom: 2rem; color: #555;">Hubungi tim reservasi kami langsung melalui WhatsApp untuk menentukan jadwal perawatan pilihan Anda.</p>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="btn-primary">Hubungi via WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Pure Haven SPA. Hak Cipta Dilindungi Undang-Undang.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
